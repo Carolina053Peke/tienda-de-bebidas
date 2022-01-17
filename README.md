@@ -2,3 +2,6 @@
 Tienda de bebidas alcoholicas creada con JavaScript, Jquery y Bootstrap. 
 Uso de Javascript para traer la info desde el api.json (async await)
 Utilización de Jquery para los eventos y las animaciones
+
+
+https://carolina053peke.github.io/tienda-de-bebidas/
