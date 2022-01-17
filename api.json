@@ -1,0 +1,74 @@
+[
+    {
+        "precio": 1000,
+        "id": 1,
+        "title": "Fernet Branca",
+        "thumbnailUrl": "https://www.res.com.ar/media/catalog/product/cache/dbcd7fcd96d4e43f69e3e3703d135006/9/2/92_2048x2048.jpg"
+    },
+    {
+        "precio": 3000,
+        "id": 2,
+        "title": "Gin Bombay Sapphire",
+        "thumbnailUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_669612-MLA43643320606_102020-V.webp"
+    },
+    {
+        "precio": 1900,
+        "id": 3,
+        "title": "Ron Malibu",
+        "thumbnailUrl": "https://krearmarket.com/wp-content/uploads/2020/12/6531DAN-RON-MALIBU-COCO.jpg"
+    },
+    {
+        "precio": 2250,
+        "id": 4,
+        "title": "Bailey's Original Cream",
+        "thumbnailUrl": "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/532/429/products/licor-baileys-original-750-ml_iz1023723388xvzxxpz1xfz99319812-614962258-1-jpgxsz99319812xim1-b5f074875bb85b15fa16027782617705-1024-10241-c91dd716fbe3028fea16141048786409-640-0.jpg"
+    },
+    {
+        "precio": 900,
+        "id": 5,
+        "title": "Aperol",
+        "thumbnailUrl": "https://hiperlibertad.vteximg.com.br/arquivos/ids/156567-1000-1000/Aperitivo-Aperol-750-Cc-APEROL-APERIT-C-ALC-X750ML-1-2720.jpg?v=637236238623830000"
+    },
+    {
+        "precio": 2500,
+        "id": 6,
+        "title": "Vodka Absolut",
+        "thumbnailUrl": "https://www.disevil.com/223-large_default/vodka-absolut-1-l.jpg"
+    },
+    {
+        "precio": 650,
+        "id": 7,
+        "title": "Vodka Smirnoff",
+        "thumbnailUrl": "http://d2r9epyceweg5n.cloudfront.net/stores/001/107/356/products/vodka-smirnoff-botella-de-750-ml-1-21-73ad137d7122c3a00816260585951637-640-0.png"
+    },
+    {
+        "precio": 4900,
+        "id": 8,
+        "title": "Whisky Jack Daniels",
+        "thumbnailUrl": "https://hiperlibertad.vteximg.com.br/arquivos/ids/163354-600-600/WHISKY-JACK-DANIELS-X750CC-1-7185.jpg?v=637291519264330000"
+    },
+    {
+        "precio": 3000,
+        "id": 9,
+        "title": "Jose Cuervo Especial",
+        "thumbnailUrl": "http://d3ugyf2ht6aenh.cloudfront.net/stores/835/701/products/tequila-jose-cuervo-12x7501-47f856441dc315217915329859004726-640-0.png"
+    },
+    {
+        "precio": 780,
+        "id": 10,
+        "title": "Gancia",
+        "thumbnailUrl": "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/069/568/products/cagan-00051-3c95ac0e76266710ac15749815083016-640-0.jpg"
+    },
+    {
+        "precio": 11022,
+        "id": 11,
+        "title": "Chivas Regal",
+        "thumbnailUrl": "https://hiperlibertad.vteximg.com.br/arquivos/ids/161588-1000-1000/Whisky-CHIVAS-REGAL-Scotch-12-a-os-1-lt-1-8567.jpg?v=637287212574430000"
+    },
+    {
+        "precio": 2800,
+        "id": 12,
+        "title": "Havana Club",
+        "thumbnailUrl": "http://d2r9epyceweg5n.cloudfront.net/stores/001/354/614/products/ron-havana-club-anejo-12x7501-c05a44682bb0f93b2b15329848432895-1024-10241-9bfcd4d673cb76f7a416026171723370-640-0.png"
+    }
+]

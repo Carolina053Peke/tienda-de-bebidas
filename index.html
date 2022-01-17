@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fufi's Drinks</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="/JS/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+</head>
+
+<body>
+    <!-- Inicio Header -->
+    <header>
+        <nav class="navbar navbar-light bg-light">
+            <a href="/" class="navbar-brand ">
+                <h2>Tienda de bebidas Fufi's Drinks</h1>
+            </a>
+        </nav>
+    </header>
+    <!-- Fin Header -->
+    <!-- Inicio Main -->
+
+    <main>
+        <!-- Inicio Venta de alcohol-->
+        <!-- Inicio template Carrito-->
+        <template id="template-carrito">
+            <tr>
+                <th scope="row">id</th>
+                <td>Café</td>
+                <td>1</td>
+                <td>
+                    <button class="btn btn-info btn-sm">
+                        +
+                    </button>
+                    <button class="btn btn-danger btn-sm">
+                        -
+                    </button>
+                </td>
+                <td>$ <span>500</span></td>
+            </tr>
+        </template>
+        <!-- Fin template Carrito-->
+
+        <!-- Inicio template Cards-->
+        <div class="container">
+            <h1>Catalogo:</h1>
+            <hr>
+            <div class="row" id="cards"></div>
+        </div>
+
+        <template id="template-card">
+            <div class="col-12 mb-2 col-md-3">
+                <div class="card">
+                    <img src="" alt="" class="card-img-top">
+                    <div class="card-body">
+                        <h5>Titulo</h5>
+                        <p class="font-weight-bold">precio</p>
+                        <button class="btn btn-success">Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <!-- Fin template Cards-->
+        <div class="container">
+            <h4>Carrito de compras</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Item</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Acción</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody id="items"></tbody>
+                <tfoot>
+                    <tr id="footer">
+                        <th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <!-- Inicio template Footer-->
+        <template id="template-footer">
+            <th scope="row" colspan="2">Total productos</th>
+            <td>10</td>
+            <td>
+                <button class="btn btn-danger btn-sm" id="vaciar-carrito">
+                    Vaciar Todo
+                </button>
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-01"
+                    id="terminar-compra">
+                    Finalizar Compra
+                </button>
+            </td>
+            <td class="font-weight-bold">$ <span>5000</span></td>
+        </template>
+        <!-- Fin template Footer-->
+
+
+        <!-- Modal 01 -->
+        <div class="modal fade" id="modal-01" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Formulario de envio</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" id="product-form" method="POST">
+                            <label for="name">Nombre y Apellido:</label>
+                            <input id="name" name="name" type="text" placeholder="Escriba su Nombre Completo..."
+                                required class="form-control">
+                            <label for="telefono">Telefono:</label>
+                            <input id="telefono" type="text" name="telefono" placeholder="Escriba su Telefono..."
+                                required class="form-control">
+                            <label for="direccion">Dirección:</label>
+                            <input id="direccion" name="direccion" type="text" placeholder="Escriba su Dirección..."
+                                required class="form-control">
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" value="Enviar" id="modal-borrar-todo" class="btn btn-primary btn-block"
+                            data-bs-toggle="modal" data-bs-target="#modal-02">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Modal 01 -->
+        <!-- Modal 02 -->
+        <div class="modal fade" id="modal-02" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Gracias por elegirnos!</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Compra realizada. Dentro de las proximas 48 Hs llegará su pedido.</p>
+
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" value="✔" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#modal-02">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Modal -->
+
+    </main>
+    <!-- Fin Main -->
+    <!-- Inicio Footer -->
+    <footer>
+        <div class="p-1 mb-1 bg-dark text-white text-center m">
+            <h6>Gracias por elegirnos - Creado por Carolina Lemes ©</h6>
+        </div>
+
+    </footer>
+    <!-- Fin Footer -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+    <script src="/JS/app.js"></script>
+
+</body>
+
+</html>
