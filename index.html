@@ -27,6 +27,20 @@
     </header>
     <!-- Fin Header -->
     <!-- Inicio Main -->
+    <!-- Barra de Categorías -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarCategorias">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link categoria-link" data-categoria="todos" href="#">Todos</a></li>
+            <li class="nav-item"><a class="nav-link categoria-link" data-categoria="aperitivo" href="#">Aperitivos</a></li>
+            <li class="nav-item"><a class="nav-link categoria-link" data-categoria="sin-alcohol" href="#">Sin Alcohol</a></li>
+        </ul>
+        <a href="carrito.html" class="btn btn-outline-light">🛒 Ver Carrito</a>
+        </div>
+    </div>
+    </nav>
+    <!-- Fin Barra de Categorías -->
 
     <main>
         <!-- Inicio Venta de alcohol-->
@@ -57,19 +71,28 @@
         </div>
 
         <template id="template-card">
-            <div class="col-12 mb-2 col-md-3">
-                <div class="card">
-                    <img src="" alt="" class="card-img-top">
-                    <div class="card-body">
-                        <h5>Titulo</h5>
-                        <p class="font-weight-bold">precio</p>
-                        <button class="btn btn-success">Comprar</button>
-                    </div>
+        <div class="col-12 mb-2 col-md-3">
+            <div class="card text-center">
+            <img src="" alt="Producto" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">Título</h5>
+                <p class="fw-bold">$ Precio</p>
+
+                <div class="d-flex justify-content-center align-items-center gap-2 mb-2">
+                <button class="btn btn-outline-danger btn-sm btn-restar" data-id="">-</button>
+                <span class="cantidad">0</span>
+                <button class="btn btn-outline-primary btn-sm btn-sumar" data-id="">+</button>
                 </div>
+
+                <button class="btn btn-success btn-agregar" data-id="">Agregar al carrito</button>
             </div>
+            </div>
+        </div>
         </template>
+
+
         <!-- Fin template Cards-->
-        <div class="container">
+        <!-- <div class="container">
             <h4>Carrito de compras</h4>
             <table class="table">
                 <thead>
@@ -88,7 +111,7 @@
                     </tr>
                 </tfoot>
             </table>
-        </div>
+        </div> -->
         <!-- Inicio template Footer-->
         <template id="template-footer">
             <th scope="row" colspan="2">Total productos</th>

@@ -10,45 +10,114 @@ const fragment = document.createDocumentFragment()
 let carrito = {}
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Recuperar y mostrar el carrito si existe
+  if (localStorage.getItem('carrito')) {
+    carrito = JSON.parse(localStorage.getItem('carrito'))
+    pintarCarrito()
+  }
+
+  // Solo si existe fetchData (es decir, en index.html), lo ejecutamos
+  if (typeof fetchData === 'function') {
     fetchData()
 
-    //localstorage
-    if (localStorage.getItem('carrito')) {
-        carrito = JSON.parse(localStorage.getItem('carrito'))
-        pintarCarrito()
+    // Filtro por categoría en index
+    document.querySelectorAll('.categoria-link').forEach(link => {
+      link.addEventListener('click', async e => {
+        e.preventDefault()
+        const categoria = e.target.dataset.categoria
 
-    }
-});
+        const res = await fetch('api.json')
+        const data = await res.json()
+
+        if (categoria === 'todos') {
+          pintarCards(data)
+        } else {
+          const filtrados = data.filter(producto => producto.categoria === categoria)
+          pintarCards(filtrados)
+        }
+      })
+    })
+  }
+})
+
+
 //cuando tocas en comprar te agrega al carrito
-cards.addEventListener('click', (e) => {
-    addCarrito(e)
-});
+cards.addEventListener('click', e => {
+  const btn = e.target
+  const id = btn.dataset.id
+  if (!id) return
+
+  const card = btn.closest('.card-body')
+  const nombre = card.querySelector('h5').textContent
+  const precio = parseFloat(card.querySelector('p').textContent.replace('$', ''))
+
+  // Siempre recuperamos todos los productos para repintar el catálogo completo
+  const productos = JSON.parse(localStorage.getItem('productos')) || []
+
+  if (btn.classList.contains('btn-sumar')) {
+    if (!carrito[id]) {
+      carrito[id] = { id, title: nombre, precio, cantidad: 0 }
+    }
+    carrito[id].cantidad++
+    pintarCarrito()
+    pintarCards(productos)
+  }
+
+  if (btn.classList.contains('btn-restar')) {
+    if (carrito[id]) {
+      carrito[id].cantidad--
+      if (carrito[id].cantidad === 0) {
+        delete carrito[id]
+      }
+      pintarCarrito()
+      pintarCards(productos)
+    }
+  }
+
+    if (btn.classList.contains('btn-agregar')) {
+    if (!carrito[id]) {
+        carrito[id] = { id, title: nombre, precio, cantidad: 1 }
+    }
+    pintarCarrito()
+    pintarCards(productos)
+    }
+})
+
 items.addEventListener('click', e => {
     btnAumentarDisminuir(e)
 })
 //trae la info desde el api.json
 const fetchData = async () => {
-    try {
-        const res = await fetch('api.json')
-        const data = await res.json()
-
-        pintarCards(data)
-    } catch (error) {
-        console.error()
-    }
+  try {
+    const res = await fetch('api.json')
+    const data = await res.json()
+    localStorage.setItem('productos', JSON.stringify(data)) // ✅ Guardar todos los productos
+    pintarCards(data)
+  } catch (error) {
+    console.error('Error al cargar productos:', error)
+  }
 }
+
 //Pintar productos
 const pintarCards = (data) => {
-    data.forEach(producto => {
-        templateCard.querySelector('h5').textContent = producto.title
-        templateCard.querySelector('p').textContent = producto.precio
-        templateCard.querySelector('img').setAttribute('src', producto.thumbnailUrl)
-        templateCard.querySelector('.btn-success').dataset.id = producto.id
-        const clone = templateCard.cloneNode(true)
-        fragment.appendChild(clone)
-    })
-    cards.appendChild(fragment)
+  cards.innerHTML = ''
+  data.forEach(producto => {
+    templateCard.querySelector('h5').textContent = producto.title
+    templateCard.querySelector('p').textContent = `$ ${producto.precio}`
+    templateCard.querySelector('img').setAttribute('src', producto.thumbnailUrl)
+
+    // Botones y cantidad
+    templateCard.querySelector('.btn-agregar').dataset.id = producto.id
+    templateCard.querySelector('.btn-sumar').dataset.id = producto.id
+    templateCard.querySelector('.btn-restar').dataset.id = producto.id
+    templateCard.querySelector('.cantidad').textContent = carrito[producto.id]?.cantidad || 0
+
+    const clone = templateCard.cloneNode(true)
+    fragment.appendChild(clone)
+  })
+  cards.appendChild(fragment)
 }
+
 // Agregar al carrito
 const addCarrito = (e) => {
 
@@ -184,4 +253,3 @@ const btnAumentarDisminuir = e => {
     }
     e.stopPropagation()
 }
-

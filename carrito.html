@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrito - Fufi's Drinks</title>
+  <link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="navbar navbar-light bg-light">
+      <a href="index.html" class="navbar-brand">
+        <h2>🛒 Carrito - Fufi's Drinks</h2>
+      </a>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main class="container my-4">
+    <h4>Carrito de compras</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Item</th>
+          <th>Cantidad</th>
+          <th>Acción</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody id="items"></tbody>
+      <tfoot id="footer">
+        <tr>
+          <th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>
+        </tr>
+      </tfoot>
+    </table>
+  </main>
+
+  <!-- Templates -->
+  <template id="template-carrito">
+    <tr>
+      <th scope="row">id</th>
+      <td>Producto</td>
+      <td>1</td>
+      <td>
+        <button class="btn btn-info btn-sm">+</button>
+        <button class="btn btn-danger btn-sm">-</button>
+      </td>
+      <td>$ <span>0</span></td>
+    </tr>
+  </template>
+
+  <template id="template-footer">
+    <th scope="row" colspan="2">Total productos</th>
+    <td>0</td>
+    <td>
+      <button class="btn btn-danger btn-sm" id="vaciar-carrito">Vaciar Todo</button>
+      <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-01">Finalizar Compra</button>
+    </td>
+    <td class="fw-bold">$ <span>0</span></td>
+  </template>
+
+  <!-- Modal Compra -->
+  <div class="modal fade" id="modal-01" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form>
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel">Formulario de Envío</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <input class="form-control mb-2" type="text" placeholder="Nombre completo" required>
+            <input class="form-control mb-2" type="text" placeholder="Teléfono" required>
+            <input class="form-control" type="text" placeholder="Dirección" required>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-success" type="submit" data-bs-toggle="modal" data-bs-target="#modal-02">Enviar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Agradecimiento -->
+  <div class="modal fade" id="modal-02" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content text-center">
+        <div class="modal-header">
+          <h5 class="modal-title">¡Gracias por tu compra!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          Tu pedido llegará en las próximas 48 hs.
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-success" data-bs-dismiss="modal">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="p-2 bg-dark text-white text-center">
+      <small>Gracias por elegirnos - Creado por Carolina Lemes ©</small>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
